@@ -11,6 +11,7 @@ require 'test_helper'
       #Railsは自動的にはてなマーク "?" をabout_pathに置換しています
       #<a href="/about">...</a>のようなhtmlがあるか確認する
       assert_select "a[href=?]", contact_path
+      assert_select "a[href=?]", signup_path
       get contact_path
       assert_select "title", full_title("Contact")  
     end
