@@ -2,14 +2,14 @@
 
 
       <div class="container">
-        <%= link_to "sample app", '#', id: "logo" %>
+       <%= link_to "sample app", root_path, id: "logo" %>
         <!--リンクを生成している それぞれ引数１，２，３と呼ばれる。-->
         <!--1はテキスト、２はURL（ダミー）、３はオプションハッシュ-->
         <!--＃はとりあえずのダミーとして使われるURL-->
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home",   '#' %></li>
-            <li><%= link_to "Help",   '#' %></li>
+            <li><%= link_to "Home",   root_path %></li>
+            <li><%= link_to "Help",   help_path %></li>
             <li><%= link_to "Log in", '#' %></li>
           </ul>
         </nav>
