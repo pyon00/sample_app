@@ -66,5 +66,21 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert_equal mixed_case_email.downcase, @user.reload.email                  #第一引数で@userのEmailを小文字に変換、第二引数でDBからEmail(大文字小文字混同のemail)を再読み込み、この二つが同一であればtrueを返す
   end
+
+  def setup
+    @user = User.new(name: "Example User", email: "user@example.com",
+                     password: "foobar", password_confirmation: "foobar")
+  end
   
+  test "password should be present (nonblank)" do                               #passwordとpassword_confirmationが空かどうか検証
+    @user.password = @user.password_confirmation = " " * 6                      #二つの属性に空白文字を6個代入
+    assert_not @user.valid?                                                     #@userが有効なら失敗、無効なら成功
+  end
+  test "password should have a minimum length" do                               #passwordとpassword_confirmationが最低6文字以上あるかどうか検証
+    @user.password = @user.password_confirmation = "a" * 5                      #二つの属性に"a"をを5個代入
+    assert_not @user.valid?                                                     #@userが有効なら失敗、無効なら成功
+  end
+
+
+
 end

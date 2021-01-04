@@ -75,6 +75,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #a
 
 #レイルズチュートリアルのもの
+#ハッシュ関数を利用する
+gem 'bcrypt',       '3.1.12'
 
 
 
