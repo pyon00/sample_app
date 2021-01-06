@@ -17,6 +17,8 @@
         <%= yield %>
         <%= render 'layouts/footer' %>
         <!--footer用のパーシャルを呼び出す-->
+        <%= debug(params) if Rails.env.development? %>
+
     </div>
 </body>
 
