@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title><%= full_title(yield(:title)) %></title>
     <%= render 'layouts/rails_default' %>
@@ -11,15 +10,16 @@
       </script>
     <![endif]-->
 </head>
-<body>
+  <body>
     <%= render 'layouts/header' %>
     <div class="container">
-        <%= yield %>
-        <%= render 'layouts/footer' %>
-        <!--footer用のパーシャルを呼び出す-->
-         <%= debug(params) if Rails.env.development? %>
-
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>                                    <!-- コントローラで割り当てられたビューのページごと返す -->
+      <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>  <!-- 開発環境時のみ、debugを表示 -->
     </div>
-</body>
+  </body>
 
 </html>

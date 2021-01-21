@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save                        #保存に成功した場合
-      redirect_to @user
+      flash[:success] = "ようこそ!!"      #flash=登録完了後のみウェルカムメッセージは表示させ、リロードしたら消えるようにする
+      redirect_to @user                  #リダイレクト redirect_to user_url(@user)→redirect_to user_url(id: @user.id)
     else
       render 'new'                       #保存が失敗したらnewビューへ戻す
     end
