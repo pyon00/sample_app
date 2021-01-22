@@ -7,4 +7,11 @@ class User < ApplicationRecord
     before_save { email.downcase! }#オブジェクトが保存される前に、インスタンス変数(email)自身に、小文字のemailの値を代入。
     has_secure_password
     validates :password, presence: true,length: { minimum: 6 }   
+
+     #fixture用に、password_digestの文字列をハッシュ化して、ハッシュ値として返す
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine::cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 end

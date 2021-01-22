@@ -1,9 +1,11 @@
 require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+
+  def setup
+    @user = users(:michael)
+  end
+  
   test "login with invalid information" do                                      # ログインフォームで空のデータを送り、エラーのフラッシュメッセージが描画され、別ページに飛んでflashが空であるかテスト
     get login_path                                                              # ログインURL(/login)のnewアクションを取得
     assert_template 'sessions/new'                                              # sessions/new(ログインフォームのビュー)が描画されていればtrue
@@ -13,4 +15,5 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     get root_path                                                               # Homeページを取得
     assert flash.empty?                                                         # flashが空であればtrue
   end
+
 end
