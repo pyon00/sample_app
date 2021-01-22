@@ -17,4 +17,11 @@ module SessionsHelper
     !current_user.nil?                                                          # current_user(ログインユーザー)がnilじゃないならtrue、それ以外ならfalseを返す
   end
 
+    # ユーザーをログアウトする
+
+    def log_out
+      session.delete(:user_id)                                                    # セッションのuser_idを削除する
+      @current_user = nil                                                         # 現在のログインユーザー（一時的なcookies）をnil（空に）する
+    end
+
   end

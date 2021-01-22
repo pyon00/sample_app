@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-
+    log_out                                                                     # ログアウトする
+    redirect_to root_url                                                        # homeへ移動
   end
 end
